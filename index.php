@@ -26,13 +26,19 @@ session_start();
           <div class="col-md-6 col-md-offset-3">
             <div id="login_jumbotron" class="jumbotron">
               <?php
-              if(isset($_SESSION['error'])){
-                if($_SESSION['error'] == 1){
-                echo "<div class=\"alert alert-danger\" role=\"alert\">";
-                echo "<strong>Oh snap!</strong> Change a few things up and try logging again.";
-                echo "</div>";
-                unset($_SESSION['error']);
-              }
+              if(isset($_SESSION['status'])){
+                if($_SESSION['status'] == 'error'){
+                  echo "<div class=\"alert alert-danger\" role=\"alert\">";
+                  echo "<strong>Oh snap!</strong> Change a few things up and try logging again.";
+                  echo "</div>";
+                  unset($_SESSION['error']);
+                }
+                else if($_SESSION['status'] == 'warning'){
+                  echo "<div class=\"alert alert-warning\" role=\"alert\">";
+                  echo "<strong>Oh snap!</strong> Change a few things up and try logging again.";
+                  echo "</div>";
+                  unset($_SESSION['error']);
+                }
               }
               ?>
                 <form autocomplete="false" action="php/login.php" method="POST">

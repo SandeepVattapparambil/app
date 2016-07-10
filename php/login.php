@@ -42,11 +42,37 @@ function get_user_record($user_name, $conn, $db_name){
 function check_user($user_name, $password, $user_record){
   if($user_name != $user_record[1]){
     echo "\nNo user found";
+    session_start();
+    $_SESSION['status'] = 'error';
+    $url = '../index.php?q=login_error';
+    redirect($url);
   }
-  if($user_name == $user_record[1] && $password != $user_record[2]){
+  else if($user_name == $user_record[1] && $password != $user_record[2]){
     echo "\nUser found but password not a match";
+    session_start();
+    $_SESSION['status'] = 'warning';
+    $url = '../index.php?q=login_warning';
+    redirect($url);
+  }
+  else if($user_name == $user_record[1] && $password == $user_record[2]){
+    echo "\nUser & password a match -> Login success";
+    session_start();
+    $url = '../home.php?q=login_success';
+    redirect($url);
   }
 }
+//function to redirect
+function redirect($url){
+  header('Location:'.$url.'');
+  return;
+}
+
+
+
+
+
+
+
 
 function login($user_name, $password, $conn, $db_name){
   mysqli_select_db($conn, $db_name);
