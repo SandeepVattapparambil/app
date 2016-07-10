@@ -3,6 +3,10 @@ session_start();
 if(!isset($_SESSION['id'])){
   header("Location:index.php");
 }
+if(isset($_SESSION['user_name'])){
+  $user_name = $_SESSION['user_name'];
+}
+require_once('php/profile_edit.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +65,42 @@ if(!isset($_SESSION['id'])){
 </nav>
     <div class="container">
       <div class="row">
-        
+        <div class="well">
+        <div class="bs-example" data-example-id="striped-table">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>User Name</th>
+                <th>Password</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td><button class="btn btn-default" type="submit">Button</button></td>
+                <td><button class="btn btn-default" type="submit">Button</button></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td><button class="btn btn-default" type="submit">Button</button></td>
+                <td><button class="btn btn-default" type="submit">Button</button></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td><button class="btn btn-default" type="submit">Button</button></td>
+                <td><button class="btn btn-default" type="submit">Button</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
       </div>
     </div>
 

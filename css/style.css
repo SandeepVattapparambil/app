@@ -4,3 +4,6 @@
 .brand{
   width: 50px;
 }
+.table-hover > tbody > tr:hover {
+    background-color: #f7f994;
+}
