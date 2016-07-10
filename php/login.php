@@ -3,7 +3,7 @@ require_once('db_connection.php');
 if(isset($_POST['username']) && isset($_POST['password'])){
   $user_name = $_POST['username'];
   $password = $_POST['password'];
-  get_user_record($user_name, $password, $conn, $db_name);
+  $user_record = get_user_record($user_name, $password, $conn, $db_name);
   //login($user_name, $password, $conn, $db_name);
 }
 else{
@@ -16,15 +16,18 @@ function get_user_record($user_name, $password, $conn, $db_name){
   $count_rows = mysqli_num_rows($result);
   if($count_rows > 0){
     echo "\nRecord Found";
+    $user_record = array();
     while($row = mysqli_fetch_assoc($result)){
       $id = $row['id'];
       $username = $row['username'];
       $password = $row['password'];
     }
+    $user_record = array($id, $username, $password);
   }
   else{
     echo "\nRecord Not Found";
   }
+  return $user_record;
 }
 function login($user_name, $password, $conn, $db_name){
   mysqli_select_db($conn, $db_name);
