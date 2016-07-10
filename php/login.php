@@ -33,14 +33,15 @@ function get_user_record($user_name, $conn, $db_name){
     //echo count($user_record);
   }
   else{
-    $user_record = array(0,0,0);
+    $user_record = array();
+    $user_record = array_filter($user_record);
     echo "\nRecord Not Found";
   }
   return $user_record;
 }
 //function to check user for authentication
 function check_user($user_name, $password, $user_record){
-  if($user_record == 0){
+  if(empty($user_record)){
     echo "\nNo user found";
     session_start();
     $_SESSION['status'] = 'error';
@@ -61,6 +62,7 @@ function check_user($user_name, $password, $user_record){
     $url = '../home.php?q=login_success';
     redirect($url);
   }
+  return;
 }
 //function to redirect
 function redirect($url){
