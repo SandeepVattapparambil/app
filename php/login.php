@@ -10,7 +10,7 @@ else{
 }
 function login($user_name, $password, $conn, $db_name){
   mysqli_select_db($conn, $db_name);
-  $sql = "SELECT * FROM user WHERE username=$user_name AND password=$password";
+  $sql = "SELECT * FROM user WHERE username='$user_name' AND password='$password'";
   $result = mysqli_query($conn, $sql);//or die('Query:<br />' . $sql . '<br /><br />Error:<br />' . mysql_error());
   $count_rows = mysqli_num_rows($result);
   if($count_rows > 0) {
