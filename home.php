@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['id'])){
+  header("Location:index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,8 +50,9 @@ session_start();
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['user_name'];?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Profile</a></li>
+            <li><a href="#">Log</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="php/logout.php">Logout</a></li>
           </ul>
         </li>
       </ul>

@@ -39,17 +39,23 @@ session_start();
                   echo "</div>";
                   unset($_SESSION['status']);
                 }
+                else if($_SESSION['status'] == 'success'){
+                  echo "<div class=\"alert alert-success\" role=\"alert\">";
+                  echo "You have logged out!.";
+                  echo "</div>";
+                  unset($_SESSION['status']);
+                }
               }
               ?>
                 <form autocomplete="false" action="php/login.php" method="POST">
                   <h2>Login</h2>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Username</label>
-                    <input name="username" type="text" class="form-control" required id="exampleInputEmail1" placeholder="Email">
+                    <input name="username" type="text" class="form-control" required id="exampleInputEmail1">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input name="password" type="password" class="form-control" required id="exampleInputPassword1" placeholder="Password">
+                    <input name="password" type="password" class="form-control" required id="exampleInputPassword1">
                   </div>
                     <div class="checkbox">
                     <label>

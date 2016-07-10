@@ -58,6 +58,7 @@ function check_user($user_name, $password, $user_record){
   else if($user_name = $user_record[1] && $password = $user_record[2]){
     echo "\nUser & password a match -> Login success";
     session_start();
+    $_SESSION['id'] = $user_record[0];
     $_SESSION['user_name'] = $user_record[1];
     $url = '../home.php?q=login_success';
     redirect($url);
