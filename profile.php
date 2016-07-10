@@ -86,14 +86,14 @@ $count_rows = mysqli_num_rows($result);
                 if($count_rows > 0){
                   while($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
-                    echo "<form action=\"\" method=\"POST\">";
+                    echo "<form action=\"php/profile_edit.php\" method=\"POST\">";
                     echo "<th scope=\"row\">".$row['id']."</th>";
                     echo "<td>";
                     echo "<div class=\"form-group\">";
-                    echo "<input type=\"text\" class=\"form-control\" id=\"name\" value=".$row['username'].">";
+                    echo "<input type=\"text\" class=\"form-control\" id=\"name".$row['id']."\" value=".$row['username'].">";
                     echo "</div></td><td>";
                     echo "<div class=\"form-group\">";
-                    echo "<input type=\"text\" class=\"form-control\" id=\"password\" value=".$row['password'].">";
+                    echo "<input type=\"text\" class=\"form-control\" id=\"password".$row['id']."\" value=".$row['password'].">";
                     echo "</div></td>";
                     echo "<td style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"submit\">Save</button></td>";
                     echo "<td style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"reset\">Clear</button></td>";
