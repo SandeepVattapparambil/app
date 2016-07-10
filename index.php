@@ -35,11 +35,11 @@ session_start();
               }
               }
               ?>
-                <form action="php/login.php" method="POST">
+                <form autocomplete="false" action="php/login.php" method="POST">
                   <h2>Login</h2>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Username</label>
-                    <input name="username" type="username" class="form-control" required id="exampleInputEmail1" placeholder="Email">
+                    <input name="username" type="text" class="form-control" required id="exampleInputEmail1" placeholder="Email">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
