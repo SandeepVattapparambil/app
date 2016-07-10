@@ -31,13 +31,13 @@ session_start();
                   echo "<div class=\"alert alert-danger\" role=\"alert\">";
                   echo "<strong>Oh snap!</strong> Change a few things up and try logging again.";
                   echo "</div>";
-                  unset($_SESSION['error']);
+                  unset($_SESSION['status']);
                 }
                 else if($_SESSION['status'] == 'warning'){
                   echo "<div class=\"alert alert-warning\" role=\"alert\">";
-                  echo "<strong>Oh snap!</strong> Change a few things up and try logging again.";
+                  echo "<strong>Oh snap!</strong> You have entered a wrong password!.";
                   echo "</div>";
-                  unset($_SESSION['error']);
+                  unset($_SESSION['status']);
                 }
               }
               ?>
