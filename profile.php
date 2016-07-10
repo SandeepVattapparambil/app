@@ -7,7 +7,12 @@ if(isset($_SESSION['id']) && isset($_SESSION['user_name'])){
   $id = $_SESSION['id'];
   $user_name = $_SESSION['user_name'];
 }
-require_once('php/profile_edit.php');
+//Require Database connection configuration file
+require_once('php/db_connection.php');
+mysqli_select_db($conn, $db_name);
+$sql = "SELECT * FROM user";
+$result = mysqli_query($conn, $sql);//or die('Query:<br />' . $sql . '<br /><br />Error:<br />' . mysql_error());
+$count_rows = mysqli_num_rows($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,27 +82,26 @@ require_once('php/profile_edit.php');
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td style="width: 116px;"><button class="btn btn-default" type="submit">Save</button></td>
-                <td style="width: 116px;"><button class="btn btn-default" type="submit">delete</button></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td><button class="btn btn-default" type="submit">Save</button></td>
-                <td><button class="btn btn-default" type="submit">delete</button></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td><button class="btn btn-default" type="submit">Save</button></td>
-                <td><button class="btn btn-default" type="submit">delete</button></td>
-              </tr>
+                <?php
+                if($count_rows > 0){
+                  while($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<form action=\"\" method=\"POST\">";
+                    echo "<th scope=\"row\">".$row['id']."</th>";
+                    echo "<td>";
+                    echo "<div class=\"form-group\">";
+                    echo "<input type=\"text\" class=\"form-control\" id=\"name\" value=".$row['username'].">";
+                    echo "</div></td><td>";
+                    echo "<div class=\"form-group\">";
+                    echo "<input type=\"text\" class=\"form-control\" id=\"password\" value=".$row['password'].">";
+                    echo "</div></td>";
+                    echo "<td style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"submit\">Save</button></td>";
+                    echo "<td style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"reset\">Clear</button></td>";
+                    echo "<td style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"submit\">delete</button></td>";
+                    echo "</form></tr>";
+                  }
+                }
+                ?>
             </tbody>
           </table>
         </div>
