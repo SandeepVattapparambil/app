@@ -3,7 +3,8 @@ session_start();
 if(!isset($_SESSION['id'])){
   header("Location:index.php");
 }
-if(isset($_SESSION['user_name'])){
+if(isset($_SESSION['id']) && isset($_SESSION['user_name'])){
+  $id = $_SESSION['id'];
   $user_name = $_SESSION['user_name'];
 }
 require_once('php/profile_edit.php');
