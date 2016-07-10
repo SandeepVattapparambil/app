@@ -3,6 +3,9 @@ session_start();
 if(!isset($_SESSION['id'])){
   header("Location:index.php");
 }
+if(isset($_SESSION['user_name'])){
+  $user_name = $_SESSION['user_name'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,20 +64,27 @@ if(!isset($_SESSION['id'])){
 </nav>
     <div class="container">
       <div class="row">
-        <div class="col-md-7 col-md-offset-2">
-          <div class="alert alert-success alert-dismissible fade in" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">×</span></button>
-     <div class="media">
-       <div class="media-left"> <a href="#">
-         <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="img/welcome.png" data-holder-rendered="true" style="width: 64px; height: 64px;"> </a> </div>
-         <div class="media-body">
-           <h4 class="media-heading">Welcome <?php echo $_SESSION['user_name'];?>!</h4>
-            Cras sit amet nibh libero, in e felis in faucibus.<a href="profile.php"> Edit Profile</a>
-         </div>
-       </div>
-        </div>
-      </div>
+        <?php
+        if(isset($_SESSION['status'])){
+          if($_SESSION['status'] = 'success'){
+            echo "<div class=\"col-md-7 col-md-offset-2\">";
+            echo "<div class=\"alert alert-success alert-dismissible fade in\" role=\"alert\">";
+            echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">";
+            echo "<span aria-hidden=\"true\">×</span></button>";
+            echo "<div class=\"media\">";
+            echo "<div class=\"media-left\"> <a href=\"#\">";
+            echo "<img class=\"media-object\" data-src=\"holder.js/64x64\" alt=\"64x64\" src=\"img/welcome.png\" data-holder-rendered=\"true\" style=\"width: 64px; height: 64px;\"> </a> </div>";
+            echo "<div class=\"media-body\">";
+            echo "<h4 class=\"media-heading\">Welcome $user_name !</h4>";
+            echo "Cras sit amet nibh libero, in e felis in faucibus.<a href=\"profile.php?q=nav_from_home\"> Edit Profile</a>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+            unset($_SESSION['status']);
+          }
+        }
+      ?>
       </div>
     </div>
 

@@ -60,6 +60,7 @@ function check_user($user_name, $password, $user_record){
     session_start();
     $_SESSION['id'] = $user_record[0];
     $_SESSION['user_name'] = $user_record[1];
+    $_SESSION['status'] = 'success';
     $url = '../home.php?q=login_success';
     redirect($url);
   }
