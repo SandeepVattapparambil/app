@@ -44,7 +44,7 @@ $count_rows = mysqli_num_rows($result);
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">NAS Media Server</a>
+      <a class="navbar-brand" href="home.php">NAS Media Server</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -90,10 +90,10 @@ $count_rows = mysqli_num_rows($result);
                     echo "<th scope=\"row\">".$row['id']."</th>";
                     echo "<td>";
                     echo "<div class=\"form-group\">";
-                    echo "<input type=\"text\" name=\"username\" class=\"form-control\" id=\"name".$row['id']."\" value=".$row['username'].">";
+                    echo "<input type=\"text\" name=\"username\" class=\"form-control\" id=\"name".$row['id']."\" value=".$row['username']." required>";
                     echo "</div></td><td>";
                     echo "<div class=\"form-group\">";
-                    echo "<input type=\"text\" name=\"password\" class=\"form-control\" id=\"password".$row['id']."\" value=".$row['password'].">";
+                    echo "<input type=\"text\" name=\"password\" class=\"form-control\" id=\"password".$row['id']."\" value=".$row['password']." required>";
                     echo "<input type=\"hidden\" name=\"id\" class=\"form-control\" value=".$row['id'].">";
                     echo "</div></td>";
                     echo "<td style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"submit\">Save</button></td>";
