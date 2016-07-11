@@ -96,13 +96,19 @@ if(isset($_SESSION['user_name'])){
         }
       ?>
       <div class="col-md-4">
-        <div class="well well-lg well-info"> a well</div>
+        <div class="well well-lg">
+          <h3><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Status</h3>
+        </div>
       </div>
       <div class="col-md-4">
-        <div class="well well-lg"> a well</div>
+        <div class="well well-lg">
+          <h3><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Media</h3>
+        </div>
       </div>
       <div class="col-md-4">
-        <div class="well well-lg"> a well</div>
+        <div class="well well-lg">
+          <h3><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> New & Pending</h3>
+        </div>
       </div>
       </div>
     </div>
