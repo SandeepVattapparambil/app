@@ -37,16 +37,26 @@ if(isset($_SESSION['user_name'])){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">NAS Media Server</a>
+      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> NAS Media Server</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Dashboard</a>
+        </li>
+        <li><a href="#"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Media Store</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
       <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-info">Search</button>
+        <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-info" type="submit">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+      </span>
+    </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -67,7 +77,7 @@ if(isset($_SESSION['user_name'])){
         <?php
         if(isset($_SESSION['status'])){
           if($_SESSION['status'] = 'success'){
-            echo "<div class=\"col-md-7 col-md-offset-2\">";
+            echo "<div class=\"col-md-6 col-md-offset-3\">";
             echo "<div class=\"alert alert-success alert-dismissible fade in\" role=\"alert\">";
             echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">";
             echo "<span aria-hidden=\"true\">×</span></button>";
@@ -85,6 +95,15 @@ if(isset($_SESSION['user_name'])){
           }
         }
       ?>
+      <div class="col-md-4">
+        <div class="well well-lg well-info"> a well</div>
+      </div>
+      <div class="col-md-4">
+        <div class="well well-lg"> a well</div>
+      </div>
+      <div class="col-md-4">
+        <div class="well well-lg"> a well</div>
+      </div>
       </div>
     </div>
 
