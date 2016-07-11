@@ -123,11 +123,27 @@ if(isset($_SESSION['user_name'])){
                   </a>
                 </div>
                 <div class="media-body">
-                  <h4 class="media-heading">Media heading</h4>
-                  ...
+                  <h4 class="media-heading">Movie Title &nbsp;
+                    <span class="label label-danger">2013</span>
+                    <span class="label label-info" style="float:right;">New</span></h4>
+                  Thriller, Action...
                 </div>
               </div>
               </li>
+              <li class="list-group-item list-group-item-default">
+                <div class="media">
+                  <div class="media-left">
+                    <a href="#">
+                      <img class="media-object" src="img/welcome2.png" style="width:50px;" alt="small_poster">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading">Movie Title &nbsp;
+                      <span class="label label-info" style="float:right;">Pending</span></h4>
+                    Thriller, Action...
+                  </div>
+                </div>
+                </li>
           </ul>
         </div>
       </div>
