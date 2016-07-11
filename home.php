@@ -130,20 +130,7 @@ if(isset($_SESSION['user_name'])){
                 </div>
               </div>
               </li>
-              <li class="list-group-item list-group-item-default">
-                <div class="media">
-                  <div class="media-left">
-                    <a href="#">
-                      <img class="media-object" src="img/welcome2.png" style="width:50px;" alt="small_poster">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">Movie Title &nbsp;
-                      <span class="label label-info" style="float:right;">Pending</span></h4>
-                    Thriller, Action...
-                  </div>
-                </div>
-                </li>
+
           </ul>
         </div>
       </div>
@@ -151,9 +138,8 @@ if(isset($_SESSION['user_name'])){
         <div class="well well-lg">
           <h3><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Tip !</h3>
           Try adding new movies to the database
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-info"><strong>3132</strong> Media entries found!</li>
-          </ul>
+          <a class="btn btn-default" href="#" role="button">Add</a> or make changes
+          <a class="btn btn-default" href="#" role="button">Edit</a>
         </div>
       </div>
       </div>

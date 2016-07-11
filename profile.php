@@ -90,7 +90,7 @@ $count_rows = mysqli_num_rows($result);
                     echo "<th scope=\"row\">".$row['id']."</th>";
                     echo "<td>";
                     echo "<div class=\"form-group\">";
-                    echo "<input type=\"text\" name=\"username\" class=\"form-control\" id=\"name".$row['id']."\" value=".$row['username']." required>";
+                    echo "<input type=\"text\" name=\"username\" class=\"form-control\" id=\"name\" value=".$row['username']." required>";
                     echo "</div></td><td>";
                     echo "<div class=\"form-group\">";
                     echo "<input type=\"text\" name=\"password\" class=\"form-control\" id=\"password".$row['id']."\" value=".$row['password']." required>";
@@ -116,6 +116,12 @@ $count_rows = mysqli_num_rows($result);
               }
             }
           ?>
+          <div id="check" class="col-md-5" style="display:none;">
+          <div class="alert alert-info" role="alert">Checking username availability!.........</div>
+        </div>
+        <div id="avail" class="col-md-5" style="display:none;">
+        <div class="alert alert-success" role="alert">Username available!</div>
+      </div>
           </table>
         </div>
       </div>
@@ -126,5 +132,32 @@ $count_rows = mysqli_num_rows($result);
     <script src="js/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function()
+      {
+       $("#name").keyup(function()
+       {
+        var name = $(this).val();
+        if(name)
+        {
+         $("#check").show();
+         $.ajax({
+          type : 'POST',
+          url  : 'php/username_check.php',
+          data : $(this).serialize(),
+          success : function(data)
+              {
+                    $("#avail").show();
+                 }
+          });
+          return false;
+        }
+        else
+        {
+         $("#check").hide();
+        }
+       });
+      });
+    </script
   </body>
 </html>
