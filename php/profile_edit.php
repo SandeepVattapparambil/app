@@ -31,6 +31,7 @@ function return_to_home($id, $user_name){
   session_start();
   $_SESSION['id'] = $id;
   $_SESSION['user_name'] = $user_name;
+  $_SESSION['status'] = 'success';
   $url = '../profile.php?q=update_success';
   redirect($url);
 }

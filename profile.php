@@ -104,6 +104,18 @@ $count_rows = mysqli_num_rows($result);
                 }
                 ?>
             </tbody>
+            <?php
+            if(isset($_SESSION['status'])){
+              if($_SESSION['status'] = 'success'){
+                echo "<div class=\"alert alert-success alert-dismissible fade in\" role=\"alert\">";
+                echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">";
+                echo "<span aria-hidden=\"true\">×</span></button>";
+                echo "<strong>Yay! </strong>Updates Successfull!.";
+                echo "</div>";
+                unset($_SESSION['status']);
+              }
+            }
+          ?>
           </table>
         </div>
       </div>
