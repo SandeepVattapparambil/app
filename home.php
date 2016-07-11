@@ -147,6 +147,15 @@ if(isset($_SESSION['user_name'])){
           </ul>
         </div>
       </div>
+      <div class="col-md-8">
+        <div class="well well-lg">
+          <h3><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Tip !</h3>
+          Try adding new movies to the database
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info"><strong>3132</strong> Media entries found!</li>
+          </ul>
+        </div>
+      </div>
       </div>
     </div>
 
