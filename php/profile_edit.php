@@ -13,17 +13,30 @@ else{
   echo "\nNo data found!";
 }
 function update_user($id, $user_name, $password, $conn, $db_name){
-  echo $id. $user_name. $password;
+  //echo $id. $user_name. $password;
   mysqli_select_db($conn, $db_name);
   $sql = "UPDATE user SET username = '$user_name', password = '$password' WHERE id = '$id'";
   $result = mysqli_query($conn, $sql)or die('Query:<br />' . $sql . '<br /><br />Error:<br />' . mysql_error());
   if($result){
     echo "\nUpdate successful";
-    return;
+    return_to_home($id, $user_name);
   }
   else{
     echo "\nUpdate unsuccessful";
-    return;
+    $url = '../profile.php?q=update_unsuccess';
+    redirect($url);
   }
+}
+function return_to_home($id, $user_name){
+  session_start();
+  $_SESSION['id'] = $id;
+  $_SESSION['user_name'] = $user_name;
+  $url = '../profile.php?q=update_success';
+  redirect($url);
+}
+//function to redirect
+function redirect($url){
+  header('Location:'.$url.'');
+  return;
 }
 ?>
