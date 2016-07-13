@@ -97,9 +97,8 @@ $count_rows = mysqli_num_rows($result);
                     echo "<input type=\"text\" name=\"password\" class=\"form-control\" id=\"password".$row['id']."\" value=".$row['password']." required>";
                     echo "<input type=\"hidden\" name=\"id\" class=\"form-control\" value=".$row['id'].">";
                     echo "</div></td>";
-                    echo "<td style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"submit\">Save</button></td>";
-                    echo "<td style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"reset\">Clear</button></td>";
-                    echo "<td style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"submit\">delete</button></td>";
+                    echo "<td id=\"save\" style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"submit\">Save</button></td>";
+                    echo "<td id=\"clear\" style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"reset\">Clear</button></td>";
                     echo "</form></tr>";
                   }
                 }
@@ -111,7 +110,7 @@ $count_rows = mysqli_num_rows($result);
                   <div class="alert alert-success" role="alert">Username available!</div>
                 </div>
                 <div id="notavail" class="col-md-5" style="display:none;">
-                  <div class="alert alert-danger" role="alert">Username not available!</div>
+                  <div class="alert alert-danger" role="alert">Username not available!, already used!</div>
                 </div>
             </tbody>
             <?php
@@ -139,39 +138,42 @@ $count_rows = mysqli_num_rows($result);
     <script type="text/javascript">
       $(document).ready(function(){
       // process the form
-      $('#name').change(function(event){
+      $('#name').keyup(function(event){
               // get the form data
               // there are many ways to get this data using jQuery (you can use the class or id also)
               var formData = {
                   'name'              : $('input[name=username]').val(),
               };
-              // process the form
-              $('#check').fadeIn();
-              $.ajax({
-                  type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                  url         : 'php/username_check.php', // the url where we want to POST
-                  data        : formData, // our data object
-                  dataType    : 'json', // what type of data do we expect back from the server
-              })
-                  // using the done promise callback
-                  .success(function(data){
-                      // log data to the console so we can see
-                      console.log(data);
-                      // here we will handle errors and validation messages
-                      $('#check').hide();
-                      if(data == 'error'){
+              if(formData){
+                // process the form
+                $('#check').fadeIn();
+                $.ajax({
+                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : 'php/username_check.php', // the url where we want to POST
+                    data        : formData, // our data object
+                    dataType    : 'json', // what type of data do we expect back from the server
+                })
+                    // using the done promise callback
+                    .success(function(data){
+                        // log data to the console so we can see
+                        console.log(data);
+                        // here we will handle errors and validation messages
                         $('#check').hide();
-                        $('#avail').hide();
-                        $('#notavail').fadeIn();
-                      }
-                      else if(data == 'success'){
-                        $('#check').hide();
-                        $('#notavail').hide();
-                        $('#avail').fadeIn();
-                      }
-                  });
-              // stop the form from submitting the normal way and refreshing the page
-              //event.preventDefault();
+                        if(data == 'error'){
+                          $('#check').hide();
+                          $('#avail').hide();
+                          $('#notavail').fadeIn();
+                        }
+                        else if(data == 'success'){
+                          $('#check').hide();
+                          $('#notavail').hide();
+                          $('#avail').fadeIn();
+                        }
+                    });
+                // stop the form from submitting the normal way and refreshing the page
+                //event.preventDefault();
+              }
+              else{}
           });
       });
     </script
