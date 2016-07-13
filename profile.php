@@ -103,20 +103,15 @@ $count_rows = mysqli_num_rows($result);
                   }
                 }
                 ?>
-                <tr>
-                  <th scope="row"></th>
-                  <td>
-                    <div id="check" class="col-md-5" style="display:none;">
-                    <div class="alert alert-info" role="alert">Checking username availability!.........</div>
-                    </div>
-                    <div id="avail" class="col-md-5" style="display:none;">
-                    <div class="alert alert-success" role="alert">Username available!</div>
-                    </div>
-                    <div id="notavail" class="col-md-5" style="display:none;">
-                    <div class="alert alert-danger" role="alert">Username not available!</div>
-                    </div>
-                  </td>
-                </tr>
+                <div id="check" class="col-md-5" style="display:none;">
+                <div class="alert alert-info" role="alert">Checking username availability!.........</div>
+                </div>
+                <div id="avail" class="col-md-5" style="display:none;">
+                <div class="alert alert-success" role="alert">Username available!</div>
+                </div>
+                <div id="notavail" class="col-md-5" style="display:none;">
+                <div class="alert alert-danger" role="alert">Username not available!</div>
+                </div>
             </tbody>
             <?php
             if(isset($_SESSION['status'])){
@@ -145,7 +140,7 @@ $count_rows = mysqli_num_rows($result);
                     $('#name').keyup(function(){
                           var user_name = $('#name').val();
                           if(user_name.length > 2){
-                                $('#check').show();
+                                $('#check').fadeIn();
                                 var post_string = 'user_name='+user_name;
                                 $.ajax({
                                       type : 'POST',
@@ -153,7 +148,7 @@ $count_rows = mysqli_num_rows($result);
                                       url  : 'php/username_check.php',
                                       success: function(responseText){
                                             if(responseText == 0){
-                                                  $('#avail').show();
+                                                  $('#avail').fadeIn();
                                                   $('#check').hide();
                                             }else if(responseText > 0){
                                               $('#avail').hide();
