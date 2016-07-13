@@ -148,7 +148,7 @@ $count_rows = mysqli_num_rows($result);
               };
               if(formData){
                 // process the form
-                $('#check').fadeIn();
+                $('#check').show();
                 $.ajax({
                     type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
                     url         : 'php/username_check.php', // the url where we want to POST
@@ -164,7 +164,7 @@ $count_rows = mysqli_num_rows($result);
                         if(data == 'error'){
                           $('#check').hide(function(){
                             $('#avail').hide(function(){
-                              $('#notavail').fadeIn(function(){
+                              $('#notavail').show(function(){
                                 $('#save').hide(function(){
                                   $('#clear').show();
                                 });
@@ -175,7 +175,7 @@ $count_rows = mysqli_num_rows($result);
                         else if(data == 'success'){
                           $('#check').hide(function(){
                             $('#notavail').hide(function(){
-                              $('#avail').fadeIn(function(){
+                              $('#avail').show(function(){
                                 $('#save').show(function(){
                                   $('#clear').show();
                                 });
@@ -183,11 +183,21 @@ $count_rows = mysqli_num_rows($result);
                             });
                           });
                         }
+                        else if(data == 'No data recieved'){
+                          $('#check').hide(function(){
+                            $('#notavail').hide(function(){
+                              $('#avail').hide(function(){
+                                $('#save').hide(function(){
+                                  $('#clear').hide();
+                                });
+                              });
+                            });
+                          });
+                        }
                     });
                 // stop the form from submitting the normal way and refreshing the page
-                //event.preventDefault();
+                event.preventDefault();
               }
-              else{}
           });
       });
     </script

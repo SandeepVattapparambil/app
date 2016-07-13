@@ -2,7 +2,7 @@
 //Require Database connection configuration file
 require_once('db_connection.php');
 //Check whether the form data fields are set
-if(isset($_POST['name'])){
+if(!empty($_POST['name'])){
   $user_name = strip_tags($_POST['name']);
   mysqli_select_db($conn, $db_name);
   $sql = "SELECT * FROM user WHERE username='$user_name'";
