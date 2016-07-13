@@ -107,12 +107,6 @@ $count_rows = mysqli_num_rows($result);
                 <div id="check" class="col-md-5" style="display:none;">
                 <div class="alert alert-info" role="alert">Checking username availability!.........</div>
                 </div>
-                <div id="avail" class="col-md-5" style="display:none;">
-                <div class="alert alert-success" role="alert">Username available!</div>
-                </div>
-                <div id="notavail" class="col-md-5" style="display:none;">
-                <div class="alert alert-danger" role="alert">Username not available!</div>
-                </div>
             </tbody>
             <?php
             if(isset($_SESSION['status'])){
@@ -137,34 +131,33 @@ $count_rows = mysqli_num_rows($result);
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript">
-              $(document).ready(function(){
-                    $('#name').keyup(function(){
-                          var user_name = $('#name').val();
-                          if(user_name.length > 2){
-                                $('#check').fadeIn();
-                                var post_string = 'user_name='+user_name;
-                                $.ajax({
-                                      type : 'POST',
-                                      data : post_string,
-                                      url  : 'php/username_check.php',
-                                      success: function(responseText){
-                                            if(responseText == 0){
-                                                  $('#avail').fadeIn();
-                                                  $('#check').hide();
-                                            }else if(responseText > 0){
-                                              $('#avail').hide();
-                                              $('#check').hide();
-                                              $('#notavail').show();
-                                            }else{
-                                            alert('Problem with mysql query');
-                                            }
-                                      }
-                                });
-                          }else{
-                          //$('#username_availability_result').html('');
-                          }
-                    });
-              });
+      $(document).ready(function(){
+      // process the form
+      $('#name').change(function(event){
+              // get the form data
+              // there are many ways to get this data using jQuery (you can use the class or id also)
+              var formData = {
+                  'name'              : $('input[name=username]').val(),
+              };
+              // process the form
+              $('#check').fadeIn();
+              $.ajax({
+                  type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                  url         : 'php/username_check.php', // the url where we want to POST
+                  data        : formData, // our data object
+                  dataType    : 'json', // what type of data do we expect back from the server
+                  encode      : true
+              })
+                  // using the done promise callback
+                  .success(function(data) {
+                      // log data to the console so we can see
+                      alert(data);
+                      // here we will handle errors and validation messages
+                  });
+              // stop the form from submitting the normal way and refreshing the page
+              //event.preventDefault();
+          });
+      });
     </script
   </body>
 </html>

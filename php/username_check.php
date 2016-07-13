@@ -9,10 +9,12 @@ if(isset($_POST['username'])){
   $result = mysqli_query($conn, $sql)or die('Query:<br />' . $sql . '<br /><br />Error:<br />' . mysql_error());
   $count_rows = mysqli_num_rows($result);
   if($count_rows > 0){
-    return 1;
+    $data = '<div id="avail" class="col-md-5"><div class="alert alert-success" role="alert">Username available!</div></div>';
+    echo(json_encode($data));
   }
   else{
-    return 0;
+    $data = '<div id="notavail" class="col-md-5"><div class="alert alert-danger" role="alert">Username not available!</div></div>';
+    echo(json_encode($data));
   }
 }
 ?>
