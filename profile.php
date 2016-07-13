@@ -97,8 +97,8 @@ $count_rows = mysqli_num_rows($result);
                     echo "<input type=\"text\" name=\"password\" class=\"form-control\" id=\"password".$row['id']."\" value=".$row['password']." required>";
                     echo "<input type=\"hidden\" name=\"id\" class=\"form-control\" value=".$row['id'].">";
                     echo "</div></td>";
-                    echo "<td style=\"width: 116px;\"><a id=\"save\" class=\"btn btn-default disabled\" type=\"submit\">Save</a></td>";
-                    echo "<td style=\"width: 116px;\"><a id=\"clear\" class=\"btn btn-default disabled\" type=\"reset\">Clear</a></td>";
+                    echo "<td style=\"width: 116px;\"><a id=\"save\" class=\"btn btn-default\" type=\"submit\">Save</a></td>";
+                    echo "<td style=\"width: 116px;\"><a id=\"clear\" class=\"btn btn-default\" type=\"reset\">Clear</a></td>";
                     echo "</form></tr>";
                   }
                 }
