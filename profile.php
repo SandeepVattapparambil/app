@@ -79,7 +79,6 @@ $count_rows = mysqli_num_rows($result);
                 <th>#</th>
                 <th>User Name</th>
                 <th>Password</th>
-                <th>Options</th>
               </tr>
             </thead>
             <tbody>
@@ -97,9 +96,12 @@ $count_rows = mysqli_num_rows($result);
                     echo "<input type=\"text\" name=\"password\" class=\"form-control\" id=\"password".$row['id']."\" value=".$row['password']." required>";
                     echo "<input type=\"hidden\" name=\"id\" class=\"form-control\" value=".$row['id'].">";
                     echo "</div></td>";
-                    echo "<td style=\"width: 116px;\"><a id=\"save\" class=\"btn btn-default\" type=\"submit\">Save</a></td>";
-                    echo "<td style=\"width: 116px;\"><a id=\"clear\" class=\"btn btn-default\" type=\"reset\">Clear</a></td>";
-                    echo "</form></tr>";
+                    echo "</tr>";
+                    echo "<tr>";
+                    echo "<td></td>";
+                    echo "<td><button style=\"display:none\" id=\"save\" class=\"btn btn-default\" type=\"submit\">Save</button>";
+                    echo "&nbsp;<button style=\"display:none\" id=\"clear\" class=\"btn btn-default\" type=\"reset\">Clear</button></td>";
+                    echo "</tr></form>";
                   }
                 }
                 ?>
@@ -162,7 +164,11 @@ $count_rows = mysqli_num_rows($result);
                         if(data == 'error'){
                           $('#check').hide(function(){
                             $('#avail').hide(function(){
-                              $('#notavail').fadeIn();
+                              $('#notavail').fadeIn(function(){
+                                $('#save').hide(function(){
+                                  $('#clear').show();
+                                });
+                              });
                             });
                           });
                         }
@@ -170,8 +176,8 @@ $count_rows = mysqli_num_rows($result);
                           $('#check').hide(function(){
                             $('#notavail').hide(function(){
                               $('#avail').fadeIn(function(){
-                                $('#save').removeClass("diasbled", function(){
-                                  $('#clear').removeClass("diasbled");
+                                $('#save').show(function(){
+                                  $('#clear').show();
                                 });
                               });
                             });
