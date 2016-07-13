@@ -122,6 +122,9 @@ $count_rows = mysqli_num_rows($result);
         <div id="avail" class="col-md-5" style="display:none;">
         <div class="alert alert-success" role="alert">Username available!</div>
       </div>
+      <div id="notavail" class="col-md-5" style="display:none;">
+      <div class="alert alert-danger" role="alert">Username not available!</div>
+    </div>
           </table>
         </div>
       </div>
@@ -133,31 +136,34 @@ $count_rows = mysqli_num_rows($result);
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript">
-      $(document).ready(function()
-      {
-       $("#name").keyup(function()
-       {
-        var name = $(this).val();
-        if(name)
-        {
-         $("#check").show();
-         $.ajax({
-          type : 'POST',
-          url  : 'php/username_check.php',
-          data : $(this).serialize(),
-          success : function(data)
-              {
-                    $("#avail").show();
-                 }
-          });
-          return false;
-        }
-        else
-        {
-         $("#check").hide();
-        }
-       });
-      });
+              $(document).ready(function(){
+                    $('#name').keyup(function(){
+                          var user_name = $('#name').val();
+                          if(user_name.length > 2){
+                                $('#check').show();
+                                var post_string = 'user_name='+user_name;
+                                $.ajax({
+                                      type : 'POST',
+                                      data : post_string,
+                                      url  : 'php/username_check.php',
+                                      success: function(responseText){
+                                            if(responseText == 0){
+                                                  $('#avail').show();
+                                                  $('#check').hide();
+                                            }else if(responseText > 0){
+                                              $('#avail').hide();
+                                              $('#check').hide();
+                                              $('#notavail').show();
+                                            }else{
+                                            alert('Problem with mysql query');
+                                            }
+                                      }
+                                });
+                          }else{
+                          //$('#username_availability_result').html('');
+                          }
+                    });
+              });
     </script
   </body>
 </html>
