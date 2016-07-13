@@ -73,7 +73,7 @@ $count_rows = mysqli_num_rows($result);
       <div class="row">
         <div class="well">
         <div class="bs-example" data-example-id="striped-table">
-          <table class="table table-striped table-hover">
+          <table class="table table-striped">
             <thead>
               <tr>
                 <th>#</th>
@@ -103,6 +103,20 @@ $count_rows = mysqli_num_rows($result);
                   }
                 }
                 ?>
+                <tr>
+                  <th scope="row"></th>
+                  <td>
+                    <div id="check" class="col-md-5" style="display:none;">
+                    <div class="alert alert-info" role="alert">Checking username availability!.........</div>
+                    </div>
+                    <div id="avail" class="col-md-5" style="display:none;">
+                    <div class="alert alert-success" role="alert">Username available!</div>
+                    </div>
+                    <div id="notavail" class="col-md-5" style="display:none;">
+                    <div class="alert alert-danger" role="alert">Username not available!</div>
+                    </div>
+                  </td>
+                </tr>
             </tbody>
             <?php
             if(isset($_SESSION['status'])){
@@ -116,15 +130,6 @@ $count_rows = mysqli_num_rows($result);
               }
             }
           ?>
-          <div id="check" class="col-md-5" style="display:none;">
-          <div class="alert alert-info" role="alert">Checking username availability!.........</div>
-        </div>
-        <div id="avail" class="col-md-5" style="display:none;">
-        <div class="alert alert-success" role="alert">Username available!</div>
-      </div>
-      <div id="notavail" class="col-md-5" style="display:none;">
-      <div class="alert alert-danger" role="alert">Username not available!</div>
-    </div>
           </table>
         </div>
       </div>
