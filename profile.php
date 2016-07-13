@@ -105,7 +105,13 @@ $count_rows = mysqli_num_rows($result);
                 }
                 ?>
                 <div id="check" class="col-md-5" style="display:none;">
-                <div class="alert alert-info" role="alert">Checking username availability!.........</div>
+                  <div class="alert alert-info" role="alert">Checking username availability!.........</div>
+                </div>
+                <div id="avail" class="col-md-5" style="display:none;">
+                  <div class="alert alert-success" role="alert">Username available!</div>
+                </div>
+                <div id="notavail" class="col-md-5" style="display:none;">
+                  <div class="alert alert-danger" role="alert">Username not available!</div>
                 </div>
             </tbody>
             <?php
@@ -146,13 +152,23 @@ $count_rows = mysqli_num_rows($result);
                   url         : 'php/username_check.php', // the url where we want to POST
                   data        : formData, // our data object
                   dataType    : 'json', // what type of data do we expect back from the server
-                  encode      : true
               })
                   // using the done promise callback
-                  .success(function(data) {
+                  .success(function(data){
                       // log data to the console so we can see
-                      alert(data);
+                      console.log(data);
                       // here we will handle errors and validation messages
+                      $('#check').hide();
+                      if(data == 'error'){
+                        $('#check').hide();
+                        $('#avail').hide();
+                        $('#notavail').fadeIn();
+                      }
+                      else if(data == 'success'){
+                        $('#check').hide();
+                        $('#notavail').hide();
+                        $('#avail').fadeIn();
+                      }
                   });
               // stop the form from submitting the normal way and refreshing the page
               //event.preventDefault();
