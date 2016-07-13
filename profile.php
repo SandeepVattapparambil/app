@@ -79,6 +79,7 @@ $count_rows = mysqli_num_rows($result);
                 <th>#</th>
                 <th>User Name</th>
                 <th>Password</th>
+                <th>Options</th>
               </tr>
             </thead>
             <tbody>
