@@ -97,8 +97,8 @@ $count_rows = mysqli_num_rows($result);
                     echo "<input type=\"text\" name=\"password\" class=\"form-control\" id=\"password".$row['id']."\" value=".$row['password']." required>";
                     echo "<input type=\"hidden\" name=\"id\" class=\"form-control\" value=".$row['id'].">";
                     echo "</div></td>";
-                    echo "<td id=\"save\" style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"submit\">Save</button></td>";
-                    echo "<td id=\"clear\" style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"reset\">Clear</button></td>";
+                    echo "<td style=\"width: 116px;\"><a id=\"save\" class=\"btn btn-default disabled\" type=\"submit\">Save</a></td>";
+                    echo "<td style=\"width: 116px;\"><a id=\"clear\" class=\"btn btn-default disabled\" type=\"reset\">Clear</a></td>";
                     echo "</form></tr>";
                   }
                 }
@@ -160,14 +160,22 @@ $count_rows = mysqli_num_rows($result);
                         // here we will handle errors and validation messages
                         $('#check').hide();
                         if(data == 'error'){
-                          $('#check').hide();
-                          $('#avail').hide();
-                          $('#notavail').fadeIn();
+                          $('#check').hide(function(){
+                            $('#avail').hide(function(){
+                              $('#notavail').fadeIn();
+                            });
+                          });
                         }
                         else if(data == 'success'){
-                          $('#check').hide();
-                          $('#notavail').hide();
-                          $('#avail').fadeIn();
+                          $('#check').hide(function(){
+                            $('#notavail').hide(function(){
+                              $('#avail').fadeIn(function(){
+                                $('#save').removeClass("diasbled", function(){
+                                  $('#clear').removeClass("diasbled");
+                                });
+                              });
+                            });
+                          });
                         }
                     });
                 // stop the form from submitting the normal way and refreshing the page
