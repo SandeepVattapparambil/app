@@ -21,7 +21,7 @@ $count_rows = mysqli_num_rows($result);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>NAS Media Server Admin - Home</title>
+    <title>NAS Media Server Admin - Profile</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -44,20 +44,30 @@ $count_rows = mysqli_num_rows($result);
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.php">NAS Media Server</a>
+      <a class="navbar-brand" href="home.php"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> NAS Media Server</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="home.php"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Dashboard</a>
+        </li>
+        <li><a href="#"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Media Store</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
       <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-info">Search</button>
+        <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-info" type="submit">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+      </span>
+    </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['user_name'];?> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $user_name ;?><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="profile.php">Profile</a></li>
             <li><a href="#">Log</a></li>

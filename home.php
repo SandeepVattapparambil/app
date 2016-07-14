@@ -37,14 +37,14 @@ if(isset($_SESSION['user_name'])){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> NAS Media Server</a>
+      <a class="navbar-brand" href="home.php"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> NAS Media Server</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active">
-          <a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Dashboard</a>
+          <a href="home.php"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Dashboard</a>
         </li>
         <li><a href="#"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Media Store</a></li>
         <li><a href="#">Link</a></li>
