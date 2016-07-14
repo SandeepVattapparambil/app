@@ -282,13 +282,15 @@ if(isset($_SESSION['user_name'])){
                           $('#check').slideUp(function(){
                             $('#populate').slideDown(function(){
                               var items = [];
-                              $.each( data, function( key, val ) {
-                                items.push( "<li class='list-group-item' id='" + key + "'>" + key +":" +val + "</li>" );
+                              $.each(data, function(key, val) {
+                                if(key == 'Poster'){
+                                  get_img(val);
+                                }
+                                items.push("<li class='list-group-item' id='" + key + "'>" + key +":" +val + "</li>");
                               });
 
-                              $( "<ul/>", {
-                                "class": "list-group",
-                                html: items.join( "" )
+                              $("<ul/>", {"class": "list-group",
+                                          html: items.join("")
                               }).appendTo( "#top" );
                             });
                           });
@@ -299,6 +301,10 @@ if(isset($_SESSION['user_name'])){
               }
           });
       });
+      function get_img(val){
+        var url = val;
+        alert(url);
+      }
     </script>
   </body>
 </html>
