@@ -7,3 +7,6 @@
 .table-hover > tbody > tr:hover {
     background-color: #f7f994;
 }
+.grey-text{
+  color: #888888;
+}

@@ -98,7 +98,7 @@ if(isset($_SESSION['user_name'])){
       <div class="col-md-8">
       <div class="col-md-6">
         <div class="well well-lg">
-          <h3><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Status</h3>
+          <h3 class="grey-text"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Status</h3>
           <ul class="list-group">
             <li class="list-group-item list-group-item-success">All Systems are working <strong>100%</strong>.</li>
           </ul>
@@ -106,7 +106,7 @@ if(isset($_SESSION['user_name'])){
       </div>
       <div class="col-md-6">
         <div class="well well-lg">
-          <h3><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Media</h3>
+          <h3 class="grey-text"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Media</h3>
           <ul class="list-group">
             <li class="list-group-item list-group-item-info"><strong>3132</strong> Media entries found!</li>
           </ul>
@@ -114,16 +114,17 @@ if(isset($_SESSION['user_name'])){
       </div>
       <div class="col-md-12">
         <div class="well well-lg">
-          <h3><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Tip !</h3>
-          Try adding new movies to the database
+          <h3 class="grey-text"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Tip !</h3>
+          <p>Try adding new movies to the database.
           <a class="btn btn-default" href="#" role="button">Add</a> or make changes
           <a class="btn btn-default" href="#" role="button">Edit</a>
+          </p>
         </div>
       </div>
     </div>
       <div class="col-md-4">
         <div class="well well-lg">
-          <h3><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Latest</h3>
+          <h3 class="grey-text"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Latest</h3>
           <ul class="list-group">
             <li class="list-group-item list-group-item-default">
               <div class="media">
