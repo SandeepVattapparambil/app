@@ -214,14 +214,7 @@ if(isset($_SESSION['user_name'])){
             <div style="display:none;" id="check" class="panel-footer panel_info">Checking network connectivity....</div>
             <div style="display:none;" id="populate" class="panel-footer panel_success">Populating data...</div>
           </div>
-          <div id="omdb_display" style="display:none;" class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title"></h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
@@ -288,7 +281,15 @@ if(isset($_SESSION['user_name'])){
                         if(data){
                           $('#check').slideUp(function(){
                             $('#populate').slideDown(function(){
+                              var items = [];
+                              $.each( data, function( key, val ) {
+                                items.push( "<li class='list-group-item' id='" + key + "'>" + key +":" +val + "</li>" );
+                              });
 
+                              $( "<ul/>", {
+                                "class": "list-group",
+                                html: items.join( "" )
+                              }).appendTo( "#top" );
                             });
                           });
                         }
