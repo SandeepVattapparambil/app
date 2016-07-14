@@ -292,6 +292,7 @@ if(isset($_SESSION['user_name'])){
                               $("<ul/>", {"class": "list-group",
                                           html: items.join("")
                               }).appendTo( "#top" );
+                              $('.list-group').append(html);
                             });
                           });
                         }
@@ -303,7 +304,8 @@ if(isset($_SESSION['user_name'])){
       });
       function get_img(val){
         var url = val;
-        alert(url);
+        var html = '<img src='+url+'>';
+        return html;
       }
     </script>
   </body>
