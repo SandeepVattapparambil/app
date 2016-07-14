@@ -79,15 +79,15 @@ if(isset($_SESSION['user_name'])){
           <div class="panel-heading"><h3 class="panel-title">Media Manager</h3></div>
           <div class="panel-body">
             <table class="table">
-              <tr>
+              <tr id="1">
                 <td><p>Add Media Manually to the database.</p></td>
                 <td><a id="add_manually" class="btn btn-success" href="#" role="button">Add Manually</a></td>
               </tr
-              <tr>
+              <tr id="2">
                 <td><p>Add Media from OMDb API - The Open Movie Database</p></td>
                 <td><a id="get_api" class="btn btn-info" href="#" role="button">Get Data from OMDB</a></td>
               </tr>
-              <tr>
+              <tr id="3">
                 <td><p>Edit Media data in the database </p></td>
                 <td><a id="edit" class="btn btn-warning" href="#" role="button">Edit</a></td>
               </tr>
@@ -102,5 +102,10 @@ if(isset($_SESSION['user_name'])){
     <script src="js/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+      });
+    </script>
   </body>
 </html>
