@@ -94,6 +94,88 @@ if(isset($_SESSION['user_name'])){
             </table>
           </div>
         </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Add Media</h3>
+          </div>
+          <div class="panel-body">
+            <table class="table">
+              <tr>
+                <td>Title</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Year</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Rated</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Released</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Runtime</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Genre</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Directors</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Writers</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Actors</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Plot</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Language</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Country</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Awards</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Poster</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Metascore</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>IMDB Rating</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>IMCB Vote</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+              <tr>
+                <td>Type</td>
+                <td><input type="text" class="form-control" id="" required></td>
+              </tr>
+            </table>
+          </div>
+        </div>
         </div>
       </div>
     </div>
