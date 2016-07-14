@@ -186,6 +186,32 @@ if(isset($_SESSION['user_name'])){
             </table>
           </div>
         </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">OMDBI</h3>
+            </div>
+            <div class="panel-body">
+              <table class="table">
+                <form action="php/omdb.php" method="POST">
+                <tr>
+                  <td>Title</td>
+                  <td><input type="text" class="form-control" id="title" required></td>
+                </tr>
+                <tr>
+                  <td>Year</td>
+                  <td><input type="text" class="form-control" id="year" required></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><button class="btn btn-info" type="submit">Pull Data</button></td>
+                </tr>
+              </form>
+              </table>
+            </div>
+            <div id="check" class="panel-footer panel_info">Checking network connectivity....</div>
+
+          </div>
         </div>
       </div>
     </div>
@@ -208,6 +234,14 @@ if(isset($_SESSION['user_name'])){
           $('#form').hide();
           $('#2').show();
             $('#3').show();
+        });
+      });
+
+      $(document).ready(function(){
+        $('#get_api').click(function(){
+          $('#form_api').show();
+          $('#1').hide();
+            $('#3').hide();
         });
       });
     </script>
