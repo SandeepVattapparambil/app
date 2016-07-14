@@ -105,9 +105,8 @@ if(isset($_SESSION['user_name'])){
     <script type="text/javascript">
       $(document).ready(function(){
         $('#add_manually').click(function(){
-          $('#2').hide(function(){
+          $('#2').hide();
             $('#3').hide();
-          });
         });
       });
     </script>
