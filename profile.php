@@ -82,20 +82,11 @@ $count_rows = mysqli_num_rows($result);
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-        <div class="panel panel-default">
+        <div id="panel" class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Profile - <?php echo $user_name ;?></h3>
             </div>
             <div class="panel-body">
-              <div id="check" class="col-md-5">
-                <div class="alert alert-info" role="alert">Checking username availability!.........</div>
-              </div>
-              <div id="avail" class="col-md-5">
-                <div class="alert alert-success" role="alert">Username available!</div>
-              </div>
-              <div id="notavail" class="col-md-5">
-                <div class="alert alert-danger" role="alert">Username already used!</div>
-              </div>
               <table class="table">
                 <?php
                   if($count_rows > 0){
@@ -110,8 +101,9 @@ $count_rows = mysqli_num_rows($result);
                         echo "</tr>";
                         echo "<input type=\"hidden\" name=\"id\" class=\"form-control\" value=".$row['id'].">";
                         echo "<tr>";
-                        echo "<td><button  id=\"save\" class=\"btn btn-default\" type=\"submit\">Save</button></td>";
-                        echo "<td><button  id=\"clear\" class=\"btn btn-default\" type=\"reset\">Clear</button></td></tr>";
+                        echo "<td></td>";
+                        echo "<td><button style=\"display:none\" id=\"save\" class=\"btn btn-default\" type=\"submit\">Save</button>";
+                        echo "&nbsp;<button style=\"display:none\" id=\"clear\" class=\"btn btn-default\" type=\"reset\">Clear</button></td></tr>";
                         echo "</form>";
                       }
                    }
@@ -130,10 +122,10 @@ $count_rows = mysqli_num_rows($result);
                 ?>
               </table>
             </div>
-            <div class="panel-footer panel_info">Checking Username availability....</div>
-            <div class="panel-footer panel_success">Username available!</div>
-            <div class="panel-footer panel_warning">Username cannot be empty!</div>
-            <div class="panel-footer panel_error">Username not available!</div>
+            <div style="display:none" id="check" class="panel-footer panel_info">Checking Username availability....</div>
+            <div style="display:none" id="avail" class="panel-footer panel_success">Username available!</div>
+            <div style="display:none" id="empty" class="panel-footer panel_warning">Username cannot be empty!</div>
+            <div style="display:none" id="notavail" class="panel-footer panel_error">Username not available!</div>
           </div>
         </div>
       </div>
@@ -166,7 +158,7 @@ $count_rows = mysqli_num_rows($result);
                         // log data to the console so we can see
                         console.log(data);
                         // here we will handle errors and validation messages
-                        $('#check').hide();
+                        $('#panel').show();
                         if(data == 'error'){
                           $('#check').hide(function(){
                             $('#avail').hide(function(){
@@ -194,7 +186,9 @@ $count_rows = mysqli_num_rows($result);
                             $('#notavail').hide(function(){
                               $('#avail').hide(function(){
                                 $('#save').hide(function(){
-                                  $('#clear').hide();
+                                  $('#clear').hide(function(){
+                                    $('#empty').show();
+                                  });
                                 });
                               });
                             });
