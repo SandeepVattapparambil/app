@@ -130,7 +130,10 @@ $count_rows = mysqli_num_rows($result);
                 ?>
               </table>
             </div>
-            <div class="panel-footer">Panel footer</div>
+            <div class="panel-footer panel_info">Checking Username availability....</div>
+            <div class="panel-footer panel_success">Username available!</div>
+            <div class="panel-footer panel_warning">Username cannot be empty!</div>
+            <div class="panel-footer panel_error">Username not available!</div>
           </div>
         </div>
       </div>
