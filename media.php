@@ -193,14 +193,14 @@ if(isset($_SESSION['user_name'])){
             </div>
             <div class="panel-body">
               <table class="table">
-                <form action="php/omdb.php" method="POST">
+                <form id="form1" action="" method="POST">
                 <tr>
                   <td>Title</td>
-                  <td><input type="text" class="form-control" id="title" required></td>
+                  <td><input name="title" type="text" class="form-control" id="title" required></td>
                 </tr>
                 <tr>
                   <td>Year</td>
-                  <td><input type="text" class="form-control" id="year" required></td>
+                  <td><input name="year" type="text" class="form-control" id="year" required></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -209,7 +209,7 @@ if(isset($_SESSION['user_name'])){
               </form>
               </table>
             </div>
-            <div id="check" class="panel-footer panel_info">Checking network connectivity....</div>
+            <div style="display:none;" id="check" class="panel-footer panel_info">Checking network connectivity....</div>
 
           </div>
         </div>
@@ -243,6 +243,37 @@ if(isset($_SESSION['user_name'])){
           $('#1').hide();
             $('#3').hide();
         });
+      });
+
+      $(document).ready(function(){
+      // process the form
+      $('#form1').submit(function(event){
+              // get the form data
+              // there are many ways to get this data using jQuery (you can use the class or id also)
+              var formData = {
+                  'title'              : $('input[name=title]').val(),
+                  'year'               : $('input[name=year]').val(),
+              };
+              if(formData){
+                // process the form
+                $('#check').slideDown();
+                $.ajax({
+                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : 'php/omdb.php', // the url where we want to POST
+                    data        : formData, // our data object
+                    dataType    : 'json', // what type of data do we expect back from the server
+                })
+                    // using the done promise callback
+                    .success(function(data){
+                        // log data to the console so we can see
+                        console.log(data);
+                        // here we will handle errors and validation messages
+
+                        });
+                // stop the form from submitting the normal way and refreshing the page
+                event.preventDefault();
+              }
+          });
       });
     </script>
   </body>
