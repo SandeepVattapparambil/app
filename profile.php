@@ -81,65 +81,58 @@ $count_rows = mysqli_num_rows($result);
 </nav>
     <div class="container">
       <div class="row">
-        <div class="well">
-        <div class="bs-example" data-example-id="striped-table">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>User Name</th>
-                <th>Password</th>
-              </tr>
-            </thead>
-            <tbody>
+        <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Profile - <?php echo $user_name ;?></h3>
+            </div>
+            <div class="panel-body">
+              <div id="check" class="col-md-5">
+                <div class="alert alert-info" role="alert">Checking username availability!.........</div>
+              </div>
+              <div id="avail" class="col-md-5">
+                <div class="alert alert-success" role="alert">Username available!</div>
+              </div>
+              <div id="notavail" class="col-md-5">
+                <div class="alert alert-danger" role="alert">Username already used!</div>
+              </div>
+              <table class="table">
                 <?php
-                if($count_rows > 0){
-                  while($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<form action=\"php/profile_edit.php\" method=\"POST\">";
-                    echo "<th scope=\"row\">".$row['id']."</th>";
-                    echo "<td>";
-                    echo "<div class=\"form-group\">";
-                    echo "<input type=\"text\" name=\"username\" class=\"form-control\" id=\"name\" value=".$row['username']." required>";
-                    echo "</div></td><td>";
-                    echo "<div class=\"form-group\">";
-                    echo "<input type=\"text\" name=\"password\" class=\"form-control\" id=\"password".$row['id']."\" value=".$row['password']." required>";
-                    echo "<input type=\"hidden\" name=\"id\" class=\"form-control\" value=".$row['id'].">";
-                    echo "</div></td>";
-                    echo "</tr>";
-                    echo "<tr>";
-                    echo "<td></td>";
-                    echo "<td><button style=\"display:none\" id=\"save\" class=\"btn btn-default\" type=\"submit\">Save</button>";
-                    echo "&nbsp;<button style=\"display:none\" id=\"clear\" class=\"btn btn-default\" type=\"reset\">Clear</button></td>";
-                    echo "</tr></form>";
+                  if($count_rows > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        echo "<form action=\"php/profile_edit.php\" method=\"POST\">";
+                        echo "<tr>";
+                        echo "<td>Username</td>";
+                        echo "<td><input type=\"text\" name=\"username\" class=\"form-control\" id=\"name\" value=".$row['username']." required></td>";
+                        echo "</tr>";
+                        echo "<tr><td>Password</td>";
+                        echo "<td><input type=\"text\" name=\"password\" class=\"form-control\" id=\"password\" value=".$row['password']."></td>";
+                        echo "</tr>";
+                        echo "<input type=\"hidden\" name=\"id\" class=\"form-control\" value=".$row['id'].">";
+                        echo "<tr>";
+                        echo "<td><button  id=\"save\" class=\"btn btn-default\" type=\"submit\">Save</button></td>";
+                        echo "<td><button  id=\"clear\" class=\"btn btn-default\" type=\"reset\">Clear</button></td></tr>";
+                        echo "</form>";
+                      }
+                   }
+                  ?>
+                  <?php
+                  if(isset($_SESSION['status'])){
+                    if($_SESSION['status'] = 'success'){
+                      echo "<div class=\"alert alert-success alert-dismissible fade in\" role=\"alert\">";
+                      echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">";
+                      echo "<span aria-hidden=\"true\">×</span></button>";
+                      echo "<strong>Yay! </strong>Updates Successfull!.";
+                      echo "</div>";
+                      unset($_SESSION['status']);
+                    }
                   }
-                }
                 ?>
-                <div id="check" class="col-md-5" style="display:none;">
-                  <div class="alert alert-info" role="alert">Checking username availability!.........</div>
-                </div>
-                <div id="avail" class="col-md-5" style="display:none;">
-                  <div class="alert alert-success" role="alert">Username available!</div>
-                </div>
-                <div id="notavail" class="col-md-5" style="display:none;">
-                  <div class="alert alert-danger" role="alert">Username not available!, already used!</div>
-                </div>
-            </tbody>
-            <?php
-            if(isset($_SESSION['status'])){
-              if($_SESSION['status'] = 'success'){
-                echo "<div class=\"alert alert-success alert-dismissible fade in\" role=\"alert\">";
-                echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">";
-                echo "<span aria-hidden=\"true\">×</span></button>";
-                echo "<strong>Yay! </strong>Updates Successfull!.";
-                echo "</div>";
-                unset($_SESSION['status']);
-              }
-            }
-          ?>
-          </table>
+              </table>
+            </div>
+            <div class="panel-footer">Panel footer</div>
+          </div>
         </div>
-      </div>
       </div>
     </div>
 
