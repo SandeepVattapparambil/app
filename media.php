@@ -3,16 +3,9 @@ session_start();
 if(!isset($_SESSION['id'])){
   header("Location:index.php");
 }
-if(isset($_SESSION['id']) && isset($_SESSION['user_name'])){
-  $id = $_SESSION['id'];
+if(isset($_SESSION['user_name'])){
   $user_name = $_SESSION['user_name'];
 }
-//Require Database connection configuration file
-require_once('php/db_connection.php');
-mysqli_select_db($conn, $db_name);
-$sql = "SELECT * FROM user";
-$result = mysqli_query($conn, $sql);//or die('Query:<br />' . $sql . '<br /><br />Error:<br />' . mysql_error());
-$count_rows = mysqli_num_rows($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,20 +37,30 @@ $count_rows = mysqli_num_rows($result);
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">NAS Media Server</a>
+      <a class="navbar-brand" href="home.php"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> NAS Media Server</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="home.php"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Dashboard</a>
+        </li>
+        <li><a href="#"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Media Store</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
       <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-info">Search</button>
+        <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-info" type="submit">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+      </span>
+    </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['user_name'];?> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $user_name ;?><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="profile.php">Profile</a></li>
             <li><a href="#">Log</a></li>
@@ -71,39 +74,91 @@ $count_rows = mysqli_num_rows($result);
 </nav>
     <div class="container">
       <div class="row">
-        <div class="well">
-        <div class="bs-example" data-example-id="striped-table">
-          <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>User Name</th>
-                <th>Password</th>
-              </tr>
-            </thead>
-            <tbody>
-                <?php
-                if($count_rows > 0){
-                  while($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<form action=\"php/profile_edit.php\" method=\"POST\">";
-                    echo "<th scope=\"row\">".$row['id']."</th>";
-                    echo "<td>";
-                    echo "<div class=\"form-group\">";
-                    echo "<input type=\"text\" class=\"form-control\" id=\"name".$row['id']."\" value=".$row['username'].">";
-                    echo "</div></td><td>";
-                    echo "<div class=\"form-group\">";
-                    echo "<input type=\"text\" class=\"form-control\" id=\"password".$row['id']."\" value=".$row['password'].">";
-                    echo "</div></td>";
-                    echo "<td style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"submit\">Save</button></td>";
-                    echo "<td style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"reset\">Clear</button></td>";
-                    echo "<td style=\"width: 116px;\"><button class=\"btn btn-default\" type=\"submit\">delete</button></td>";
-                    echo "</form></tr>";
-                  }
-                }
-                ?>
-            </tbody>
-          </table>
+        <?php
+        if(isset($_SESSION['status'])){
+          if($_SESSION['status'] = 'success'){
+            echo "<div class=\"col-md-6 col-md-offset-3\">";
+            echo "<div class=\"alert alert-success alert-dismissible fade in\" role=\"alert\">";
+            echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">";
+            echo "<span aria-hidden=\"true\">×</span></button>";
+            echo "<div class=\"media\">";
+            echo "<div class=\"media-left\"> <a href=\"#\">";
+            echo "<img class=\"media-object\" data-src=\"holder.js/64x64\" alt=\"64x64\" src=\"img/welcome.png\" data-holder-rendered=\"true\" style=\"width: 64px; height: 64px;\"> </a> </div>";
+            echo "<div class=\"media-body\">";
+            echo "<h4 class=\"media-heading\">Welcome $user_name !</h4>";
+            echo "Cras sit amet nibh libero, in e felis in faucibus.<a href=\"profile.php?q=nav_from_home\"> Edit Profile</a>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+            unset($_SESSION['status']);
+          }
+        }
+      ?>
+      <div class="col-md-8">
+      <div class="col-md-6">
+        <div class="well well-lg">
+          <h3 class="grey-text"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Status</h3>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-success">All Systems are working <strong>100%</strong>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="well well-lg">
+          <h3 class="grey-text"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Media</h3>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info"><strong>3132</strong> Media entries found!</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="well well-lg">
+          <h3 class="grey-text"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Tip !</h3>
+          <p>Try adding new movies to the database.
+          <a class="btn btn-default" href="#" role="button">Add</a> or make changes
+          <a class="btn btn-default" href="#" role="button">Edit</a>
+          </p>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-4">
+        <div class="well well-lg">
+          <h3 class="grey-text"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Latest</h3>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-default">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="img/welcome2.png" style="width:50px;" alt="small_poster">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Movie Title &nbsp;
+                    <span class="label label-danger">2013</span>
+                    <span class="label label-info" style="float:right;">New</span></h4>
+                  Thriller, Action...
+                </div>
+              </div>
+              </li>
+          </ul>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-default">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="img/welcome2.png" style="width:50px;" alt="small_poster">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Movie Title &nbsp;
+                    <span class="label label-danger">2013</span>
+                    <span class="label label-info" style="float:right;">New</span></h4>
+                  Thriller, Action...
+                </div>
+              </div>
+              </li>
+          </ul>
         </div>
       </div>
       </div>
