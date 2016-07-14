@@ -74,7 +74,7 @@ if(isset($_SESSION['user_name'])){
 </nav>
     <div class="container">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div id="top" class="col-md-8 col-md-offset-2">
           <div class="panel panel-default">
           <div class="panel-heading"><h3 class="panel-title">Media Manager</h3></div>
           <div class="panel-body">
@@ -187,13 +187,13 @@ if(isset($_SESSION['user_name'])){
           </div>
         </div>
 
-        <div class="panel panel-default">
+        <div style="display:none;" id="omdb" class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">OMDBI</h3>
             </div>
             <div class="panel-body">
               <table class="table">
-                <form id="form1" action="" method="POST">
+                <form id="form1" action="#" method="POST">
                 <tr>
                   <td>Title</td>
                   <td><input name="title" type="text" class="form-control" id="title" required></td>
@@ -204,13 +204,23 @@ if(isset($_SESSION['user_name'])){
                 </tr>
                 <tr>
                   <td></td>
-                  <td><button class="btn btn-info" type="submit">Pull Data</button></td>
+                  <td><button class="btn btn-info" type="submit">Pull Data</button>
+                    <a id="omdb_close" class="btn btn-default">Close</a>
+                  </td>
                 </tr>
               </form>
               </table>
             </div>
             <div style="display:none;" id="check" class="panel-footer panel_info">Checking network connectivity....</div>
-
+            <div style="display:none;" id="populate" class="panel-footer panel_success">Populating data...</div>
+          </div>
+          <div id="omdb_display" style="display:none;" class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"></h3>
+            </div>
+            <div class="panel-body">
+              Panel content
+            </div>
           </div>
         </div>
       </div>
@@ -242,6 +252,16 @@ if(isset($_SESSION['user_name'])){
           $('#form_api').show();
           $('#1').hide();
             $('#3').hide();
+            $('#omdb').show();
+        });
+      });
+
+      $(document).ready(function(){
+        $('#omdb_close').click(function(){
+          $('#1').show();
+            $('#2').show();
+            $('#3').show();
+            $('#omdb').hide();
         });
       });
 
@@ -250,17 +270,14 @@ if(isset($_SESSION['user_name'])){
       $('#form1').submit(function(event){
               // get the form data
               // there are many ways to get this data using jQuery (you can use the class or id also)
-              var formData = {
-                  'title'              : $('input[name=title]').val(),
-                  'year'               : $('input[name=year]').val(),
-              };
-              if(formData){
+              var title = $('input[name=title]').val();
+              var year = $('input[name=year]').val();
+              if(title && year){
                 // process the form
                 $('#check').slideDown();
                 $.ajax({
-                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                    url         : 'php/omdb.php', // the url where we want to POST
-                    data        : formData, // our data object
+                    type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : 'http://www.omdbapi.com/?t='+title+'&y='+year+'&plot=full&r=json', // the url where we want to GET
                     dataType    : 'json', // what type of data do we expect back from the server
                 })
                     // using the done promise callback
@@ -268,7 +285,13 @@ if(isset($_SESSION['user_name'])){
                         // log data to the console so we can see
                         console.log(data);
                         // here we will handle errors and validation messages
+                        if(data){
+                          $('#check').slideUp(function(){
+                            $('#populate').slideDown(function(){
 
+                            });
+                          });
+                        }
                         });
                 // stop the form from submitting the normal way and refreshing the page
                 event.preventDefault();
