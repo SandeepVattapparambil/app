@@ -43,10 +43,10 @@ if(isset($_SESSION['user_name'])){
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li>
           <a href="home.php"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Dashboard</a>
         </li>
-        <li><a href="#"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Media Store</a></li>
+        <li class="active"><a href="media.php"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Media Store</a></li>
         <li><a href="#">Link</a></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
@@ -74,93 +74,8 @@ if(isset($_SESSION['user_name'])){
 </nav>
     <div class="container">
       <div class="row">
-        <?php
-        if(isset($_SESSION['status'])){
-          if($_SESSION['status'] = 'success'){
-            echo "<div class=\"col-md-6 col-md-offset-3\">";
-            echo "<div class=\"alert alert-success alert-dismissible fade in\" role=\"alert\">";
-            echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">";
-            echo "<span aria-hidden=\"true\">×</span></button>";
-            echo "<div class=\"media\">";
-            echo "<div class=\"media-left\"> <a href=\"#\">";
-            echo "<img class=\"media-object\" data-src=\"holder.js/64x64\" alt=\"64x64\" src=\"img/welcome.png\" data-holder-rendered=\"true\" style=\"width: 64px; height: 64px;\"> </a> </div>";
-            echo "<div class=\"media-body\">";
-            echo "<h4 class=\"media-heading\">Welcome $user_name !</h4>";
-            echo "Cras sit amet nibh libero, in e felis in faucibus.<a href=\"profile.php?q=nav_from_home\"> Edit Profile</a>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
-            unset($_SESSION['status']);
-          }
-        }
-      ?>
-      <div class="col-md-8">
-      <div class="col-md-6">
-        <div class="well well-lg">
-          <h3 class="grey-text"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Status</h3>
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-success">All Systems are working <strong>100%</strong>.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="well well-lg">
-          <h3 class="grey-text"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Media</h3>
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-info"><strong>3132</strong> Media entries found!</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="well well-lg">
-          <h3 class="grey-text"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Tip !</h3>
-          <p>Try adding new movies to the database.
-          <a class="btn btn-default" href="#" role="button">Add</a> or make changes
-          <a class="btn btn-default" href="#" role="button">Edit</a>
-          </p>
-        </div>
-      </div>
-    </div>
-      <div class="col-md-4">
-        <div class="well well-lg">
-          <h3 class="grey-text"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Latest</h3>
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-default">
-              <div class="media">
-                <div class="media-left">
-                  <a href="#">
-                    <img class="media-object" src="img/welcome2.png" style="width:50px;" alt="small_poster">
-                  </a>
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">Movie Title &nbsp;
-                    <span class="label label-danger">2013</span>
-                    <span class="label label-info" style="float:right;">New</span></h4>
-                  Thriller, Action...
-                </div>
-              </div>
-              </li>
-          </ul>
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-default">
-              <div class="media">
-                <div class="media-left">
-                  <a href="#">
-                    <img class="media-object" src="img/welcome2.png" style="width:50px;" alt="small_poster">
-                  </a>
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">Movie Title &nbsp;
-                    <span class="label label-danger">2013</span>
-                    <span class="label label-info" style="float:right;">New</span></h4>
-                  Thriller, Action...
-                </div>
-              </div>
-              </li>
-          </ul>
-        </div>
-      </div>
+
+
       </div>
     </div>
 

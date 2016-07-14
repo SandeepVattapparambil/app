@@ -46,7 +46,7 @@ if(isset($_SESSION['user_name'])){
         <li class="active">
           <a href="home.php"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Dashboard</a>
         </li>
-        <li><a href="#"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Media Store</a></li>
+        <li><a href="media.php"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Media Store</a></li>
         <li><a href="#">Link</a></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
@@ -116,8 +116,8 @@ if(isset($_SESSION['user_name'])){
         <div class="well well-lg">
           <h3 class="grey-text"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Tip !</h3>
           <p>Try adding new movies to the database.
-          <a class="btn btn-default" href="#" role="button">Add</a> or make changes
-          <a class="btn btn-default" href="#" role="button">Edit</a>
+          <a class="btn btn-default" href="media.php" role="button">Add</a> or make changes
+          <a class="btn btn-default" href="media.php" role="button">Edit</a>
           </p>
         </div>
       </div>
