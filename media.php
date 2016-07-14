@@ -95,12 +95,13 @@ if(isset($_SESSION['user_name'])){
           </div>
         </div>
 
-        <div class="panel panel-default">
+        <div id="form" style="display:none;" class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Add Media</h3>
           </div>
           <div class="panel-body">
             <table class="table">
+              <form method="POST" action="php/">
               <tr>
                 <td>Title</td>
                 <td><input type="text" class="form-control" id="" required></td>
@@ -173,6 +174,15 @@ if(isset($_SESSION['user_name'])){
                 <td>Type</td>
                 <td><input type="text" class="form-control" id="" required></td>
               </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <button class="btn btn-default" type="reset">Clear</button>
+                  <button class="btn btn-info" type="submit">Save</button>
+                  <a id="form_close" class="btn btn-danger">Cancel</a>
+                </td>
+              </tr>
+            </form>
             </table>
           </div>
         </div>
@@ -189,6 +199,15 @@ if(isset($_SESSION['user_name'])){
         $('#add_manually').click(function(){
           $('#2').hide();
             $('#3').hide();
+            $('#form').show();
+        });
+      });
+
+      $(document).ready(function(){
+        $('#form_close').click(function(){
+          $('#form').hide();
+          $('#2').show();
+            $('#3').show();
         });
       });
     </script>
