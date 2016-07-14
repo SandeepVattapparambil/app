@@ -95,7 +95,8 @@ if(isset($_SESSION['user_name'])){
           }
         }
       ?>
-      <div class="col-md-4">
+      <div class="col-md-8">
+      <div class="col-md-6">
         <div class="well well-lg">
           <h3><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Status</h3>
           <ul class="list-group">
@@ -103,7 +104,7 @@ if(isset($_SESSION['user_name'])){
           </ul>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="well well-lg">
           <h3><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Media</h3>
           <ul class="list-group">
@@ -111,6 +112,15 @@ if(isset($_SESSION['user_name'])){
           </ul>
         </div>
       </div>
+      <div class="col-md-12">
+        <div class="well well-lg">
+          <h3><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Tip !</h3>
+          Try adding new movies to the database
+          <a class="btn btn-default" href="#" role="button">Add</a> or make changes
+          <a class="btn btn-default" href="#" role="button">Edit</a>
+        </div>
+      </div>
+    </div>
       <div class="col-md-4">
         <div class="well well-lg">
           <h3><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Latest</h3>
@@ -130,16 +140,24 @@ if(isset($_SESSION['user_name'])){
                 </div>
               </div>
               </li>
-
           </ul>
-        </div>
-      </div>
-      <div class="col-md-8">
-        <div class="well well-lg">
-          <h3><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Tip !</h3>
-          Try adding new movies to the database
-          <a class="btn btn-default" href="#" role="button">Add</a> or make changes
-          <a class="btn btn-default" href="#" role="button">Edit</a>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-default">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="img/welcome2.png" style="width:50px;" alt="small_poster">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Movie Title &nbsp;
+                    <span class="label label-danger">2013</span>
+                    <span class="label label-info" style="float:right;">New</span></h4>
+                  Thriller, Action...
+                </div>
+              </div>
+              </li>
+          </ul>
         </div>
       </div>
       </div>
