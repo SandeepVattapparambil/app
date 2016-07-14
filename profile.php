@@ -164,7 +164,9 @@ $count_rows = mysqli_num_rows($result);
                             $('#avail').hide(function(){
                               $('#notavail').show(function(){
                                 $('#save').hide(function(){
-                                  $('#clear').show();
+                                  $('#clear').show(function(){
+                                      $('#empty').hide();
+                                  });
                                 });
                               });
                             });
@@ -175,7 +177,9 @@ $count_rows = mysqli_num_rows($result);
                             $('#notavail').hide(function(){
                               $('#avail').show(function(){
                                 $('#save').show(function(){
-                                  $('#clear').show();
+                                  $('#clear').show(function(){
+                                      $('#empty').hide();
+                                  });
                                 });
                               });
                             });
@@ -186,7 +190,7 @@ $count_rows = mysqli_num_rows($result);
                             $('#notavail').hide(function(){
                               $('#avail').hide(function(){
                                 $('#save').hide(function(){
-                                  $('#clear').hide(function(){
+                                  $('#clear').show(function(){
                                     $('#empty').show();
                                   });
                                 });
