@@ -81,15 +81,15 @@ if(isset($_SESSION['user_name'])){
             <table class="table">
               <tr>
                 <td><p>Add Media Manually to the database.</p></td>
-                <td><a class="btn btn-success" href="#" role="button">Add Manually</a></td>
+                <td><a id="add_manually" class="btn btn-success" href="#" role="button">Add Manually</a></td>
               </tr
               <tr>
                 <td><p>Add Media from OMDb API - The Open Movie Database</p></td>
-                <td><a class="btn btn-info" href="#" role="button">Get Data from OMDB</a></td>
+                <td><a id="get_api" class="btn btn-info" href="#" role="button">Get Data from OMDB</a></td>
               </tr>
               <tr>
                 <td><p>Edit Media data in the database </p></td>
-                <td><a class="btn btn-warning" href="#" role="button">Edit</a></td>
+                <td><a id="edit" class="btn btn-warning" href="#" role="button">Edit</a></td>
               </tr>
             </table>
           </div>
