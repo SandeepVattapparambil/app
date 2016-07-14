@@ -74,8 +74,15 @@ if(isset($_SESSION['user_name'])){
 </nav>
     <div class="container">
       <div class="row">
-
-
+        <div class="col-md-8 col-md-offset-2">
+          <div class="panel panel-default">
+          <div class="panel-heading">Media Manager</div>
+          <div class="panel-body">
+            <p>Add Media Manually to the database <a class="btn btn-warning" href="#" role="button">Add Manually</a></p>
+            <p>Add Media from OMDb API - The Open Movie Database <a class="btn btn-info" href="#" role="button">Get Data from OMDB</a></p>
+          </div>
+        </div>
+        </div>
       </div>
     </div>
 
