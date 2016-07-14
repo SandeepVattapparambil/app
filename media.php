@@ -82,7 +82,7 @@ if(isset($_SESSION['user_name'])){
               <tr id="1">
                 <td><p>Add Media Manually to the database.</p></td>
                 <td><a id="add_manually" class="btn btn-success" href="#" role="button">Add Manually</a></td>
-              </tr
+              </tr>
               <tr id="2">
                 <td><p>Add Media from OMDb API - The Open Movie Database</p></td>
                 <td><a id="get_api" class="btn btn-info" href="#" role="button">Get Data from OMDB</a></td>
@@ -104,7 +104,11 @@ if(isset($_SESSION['user_name'])){
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
-
+        $('#add_manually').click(function(){
+          $('#2').hide(function(){
+            $('#3').hide();
+          });
+        });
       });
     </script>
   </body>
