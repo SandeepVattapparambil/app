@@ -53,7 +53,7 @@ $count_rows = mysqli_num_rows($result);
         <li>
           <a href="home.php"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Dashboard</a>
         </li>
-        <li><a href="#"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Media Store</a></li>
+        <li><a href="media.php"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Media Store</a></li>
         <li><a href="#">Link</a></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
