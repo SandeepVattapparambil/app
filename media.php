@@ -156,7 +156,7 @@ if(isset($_SESSION['user_name'])){
               </tr>
               <tr>
                 <td>Poster</td>
-                <td><input type="text" class="form-control" id="" required></td>
+                <td><div id="myDrop"></div></td>
               </tr>
               <tr>
                 <td>Metascore</td>
@@ -307,6 +307,7 @@ if(isset($_SESSION['user_name'])){
         var html = '<img src='+url+'>';
         return html;
       }
+      
     </script>
   </body>
 </html>
