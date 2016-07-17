@@ -282,9 +282,9 @@ if(isset($_SESSION['user_name'])){
                           $('#check').slideUp(function(){
                             $('#populate').slideDown(function(){
                               var items = [];
-                              $.each(data, function(key, val) {
+                              $.each(data, function(key, val){
                                 if(key == 'Poster'){
-                                  get_img(val);
+                                  var image = get_img(val);
                                 }
                                 items.push("<li class='list-group-item' id='" + key + "'>" + key +":" +val + "</li>");
                               });
@@ -292,7 +292,6 @@ if(isset($_SESSION['user_name'])){
                               $("<ul/>", {"class": "list-group",
                                           html: items.join("")
                               }).appendTo( "#top" );
-                              $('.list-group').append(html);
                             });
                           });
                         }
